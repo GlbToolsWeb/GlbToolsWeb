@@ -1,5 +1,5 @@
 import { WebIO } from '@gltf-transform/core';
-import { mergeDocuments, unpartition } from '@gltf-transform/functions';
+import { mergeDocuments, prune, unpartition } from '@gltf-transform/functions';
 import { KHRTextureTransform } from '@gltf-transform/extensions';
 import { MaxRectsPacker } from 'maxrects-packer';
 
@@ -43,6 +43,7 @@ self.onmessage = async (event) => {
     // Ensure a single buffer for GLB.
     await merged.transform(unpartition());
     await sanitizeTextureImages(merged);
+    await merged.transform(prune());
     const out = await io.writeBinary(merged);
     const base64 = arrayBufferToBase64(out);
     self.postMessage({ glb: base64, layout: layoutInfo });

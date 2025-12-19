@@ -1,0 +1,1111 @@
+[
+  {
+    "map": "basecolor",
+    "atlases": [
+      {
+        "index": 0,
+        "width": 3073,
+        "height": 2048,
+        "rects": [
+          {
+            "texture": "DEMONZ_A",
+            "materials": [
+              "Back_005_DEMONZ"
+            ],
+            "x": 0,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Jacket_014_AnimusResearch_A",
+            "materials": [
+              "Jacket_014_AnimusResearch"
+            ],
+            "x": 1025,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Bottoms_003_JoggerTech_A",
+            "materials": [
+              "Bottoms_003_JoggerTech"
+            ],
+            "x": 0,
+            "y": 1025,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Socks_Murakami_DNA_A",
+            "materials": [
+              "SK_Socks_001_MkDna_RIG_Rig.v005"
+            ],
+            "x": 1025,
+            "y": 1025,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Skull_001_Rd_A",
+            "materials": [
+              "SK_Skull_001_Rd_RIG_Rig.v002"
+            ],
+            "x": 2050,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Footwear_Sandals_A",
+            "materials": [
+              "SK_Sandals_001_Blck_RIG_Rig.v004"
+            ],
+            "x": 2050,
+            "y": 1025,
+            "width": 511,
+            "height": 511
+          },
+          {
+            "texture": "DNA_Angel_Divine_Light_A",
+            "materials": [
+              "SK_Head_001_Default_RIG_Rig.v094"
+            ],
+            "x": 2050,
+            "y": 1538,
+            "width": 255,
+            "height": 255
+          },
+          {
+            "texture": "Eyelashes_A",
+            "materials": [
+              "EyelashesTop_001_Default"
+            ],
+            "x": 2050,
+            "y": 1795,
+            "width": 127,
+            "height": 127
+          },
+          {
+            "texture": "Eyes_Angel_YLLW_A",
+            "materials": [
+              "Eyes_001_AngelYellow"
+            ],
+            "x": 2179,
+            "y": 1795,
+            "width": 127,
+            "height": 127
+          }
+        ]
+      }
+    ],
+    "uvDiagnostics": [
+      {
+        "material": "Back_005_DEMONZ",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "Jacket_014_AnimusResearch",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 1025,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "Bottoms_003_JoggerTech",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 0,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Socks_001_MkDna_RIG_Rig.v005",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 1025,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Skull_001_Rd_RIG_Rig.v002",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 2050,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Sandals_001_Blck_RIG_Rig.v004",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 2050,
+          "y": 1025,
+          "w": 511,
+          "h": 511
+        }
+      },
+      {
+        "material": "SK_Head_001_Default_RIG_Rig.v094",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 2050,
+          "y": 1538,
+          "w": 255,
+          "h": 255
+        }
+      },
+      {
+        "material": "EyelashesTop_001_Default",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 2050,
+          "y": 1795,
+          "w": 127,
+          "h": 127
+        }
+      },
+      {
+        "material": "Eyes_001_AngelYellow",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "basecolor",
+        "rect": {
+          "x": 2179,
+          "y": 1795,
+          "w": 127,
+          "h": 127
+        }
+      },
+      {
+        "material": "Back_005_DEMONZ",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.013227679766714573,
+          0.011765062808990479
+        ],
+        "preMax": [
+          0.9874643683433533,
+          0.9874725341796875
+        ],
+        "postMin": [
+          0.00440348731353879,
+          0.005876786541193724
+        ],
+        "postMax": [
+          0.3287263512611389,
+          0.4932540953159332
+        ],
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 1023,
+          "h": 1023,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      },
+      {
+        "material": "EyelashesTop_001_Default",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.016418099403381348,
+          0.027365922927856445
+        ],
+        "preMax": [
+          0.9805326461791992,
+          0.9806178212165833
+        ],
+        "postMin": [
+          0.6677790880203247,
+          0.8781618475914001
+        ],
+        "postMax": [
+          0.7076237201690674,
+          0.9372746348381042
+        ],
+        "rect": {
+          "x": 2050,
+          "y": 1795,
+          "w": 127,
+          "h": 127,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      },
+      {
+        "material": "Eyes_001_AngelYellow",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.004407640080899,
+          0.012382149696350098
+        ],
+        "preMax": [
+          0.9838653802871704,
+          0.786952555179596
+        ],
+        "postMin": [
+          0.7092612385749817,
+          0.8772326707839966
+        ],
+        "postMax": [
+          0.749739944934845,
+          0.9252651333808899
+        ],
+        "rect": {
+          "x": 2179,
+          "y": 1795,
+          "w": 127,
+          "h": 127,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      },
+      {
+        "material": "SK_Head_001_Default_RIG_Rig.v094",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.01879430003464222,
+          0.012313306331634521
+        ],
+        "preMax": [
+          0.9260756969451904,
+          0.990891695022583
+        ],
+        "postMin": [
+          0.6686601042747498,
+          0.7525097131729126
+        ],
+        "postMax": [
+          0.7439470291137695,
+          0.8743541836738586
+        ],
+        "rect": {
+          "x": 2050,
+          "y": 1538,
+          "w": 255,
+          "h": 255,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      },
+      {
+        "material": "Jacket_014_AnimusResearch",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.019372999668121338,
+          0.009127974510192871
+        ],
+        "preMax": [
+          0.9929060339927673,
+          0.9747325778007507
+        ],
+        "postMin": [
+          0.3399995267391205,
+          0.004559530410915613
+        ],
+        "postMax": [
+          0.6640881299972534,
+          0.48689034581184387
+        ],
+        "rect": {
+          "x": 1025,
+          "y": 0,
+          "w": 1023,
+          "h": 1023,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      },
+      {
+        "material": "Bottoms_003_JoggerTech",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.0036247901152819395,
+          0.014281988143920898
+        ],
+        "preMax": [
+          0.9948761463165283,
+          0.9953955411911011
+        ],
+        "postMin": [
+          0.0012066906783729792,
+          0.5076223015785217
+        ],
+        "postMax": [
+          0.3311937153339386,
+          0.997700035572052
+        ],
+        "rect": {
+          "x": 0,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      },
+      {
+        "material": "SK_Socks_001_MkDna_RIG_Rig.v005",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.00896126963198185,
+          0.020571529865264893
+        ],
+        "preMax": [
+          0.9876909852027893,
+          0.9468020796775818
+        ],
+        "postMin": [
+          0.33653348684310913,
+          0.5107640027999878
+        ],
+        "postMax": [
+          0.6623520851135254,
+          0.9734269976615906
+        ],
+        "rect": {
+          "x": 1025,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      },
+      {
+        "material": "SK_Sandals_001_Blck_RIG_Rig.v004",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.007926000282168388,
+          0.0037649869918823242
+        ],
+        "preMax": [
+          0.9961270093917847,
+          0.997672975063324
+        ],
+        "postMin": [
+          0.6684185266494751,
+          0.5014277100563049
+        ],
+        "postMax": [
+          0.8327435255050659,
+          0.7494193911552429
+        ],
+        "rect": {
+          "x": 2050,
+          "y": 1025,
+          "w": 511,
+          "h": 511,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      },
+      {
+        "material": "SK_Skull_001_Rd_RIG_Rig.v002",
+        "texCoordIndex": 0,
+        "map": "basecolor",
+        "preMin": [
+          0.0039530000649392605,
+          0.017486631870269775
+        ],
+        "preMax": [
+          0.994940996170044,
+          0.9960470199584961
+        ],
+        "postMin": [
+          0.6684165000915527,
+          0.008734777569770813
+        ],
+        "postMax": [
+          0.9983158707618713,
+          0.49753716588020325
+        ],
+        "rect": {
+          "x": 2050,
+          "y": 0,
+          "w": 1023,
+          "h": 1023,
+          "atlasW": 3073,
+          "atlasH": 2048
+        }
+      }
+    ]
+  },
+  {
+    "map": "normal",
+    "atlases": [
+      {
+        "index": 0,
+        "width": 3073,
+        "height": 2048,
+        "rects": [
+          {
+            "texture": "DEMONZ_N",
+            "materials": [
+              "Back_005_DEMONZ"
+            ],
+            "x": 0,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Jacket_014_AnimusResearch_N",
+            "materials": [
+              "Jacket_014_AnimusResearch"
+            ],
+            "x": 1025,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Bottoms_003_JoggerTech_N",
+            "materials": [
+              "Bottoms_003_JoggerTech"
+            ],
+            "x": 0,
+            "y": 1025,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Socks_Murakami_DNA_N",
+            "materials": [
+              "SK_Socks_001_MkDna_RIG_Rig.v005"
+            ],
+            "x": 1025,
+            "y": 1025,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Skull_001_Rd_N",
+            "materials": [
+              "SK_Skull_001_Rd_RIG_Rig.v002"
+            ],
+            "x": 2050,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Footwear_Sandals_N",
+            "materials": [
+              "SK_Sandals_001_Blck_RIG_Rig.v004"
+            ],
+            "x": 2050,
+            "y": 1025,
+            "width": 511,
+            "height": 511
+          },
+          {
+            "texture": "DNA_Angel_Divine_Light_N",
+            "materials": [
+              "SK_Head_001_Default_RIG_Rig.v094"
+            ],
+            "x": 2050,
+            "y": 1538,
+            "width": 255,
+            "height": 255
+          },
+          {
+            "texture": "Eyelashes_N",
+            "materials": [
+              "EyelashesTop_001_Default"
+            ],
+            "x": 2050,
+            "y": 1795,
+            "width": 127,
+            "height": 127
+          },
+          {
+            "texture": "Eyes_Angel_YLLW_N",
+            "materials": [
+              "Eyes_001_AngelYellow"
+            ],
+            "x": 2179,
+            "y": 1795,
+            "width": 127,
+            "height": 127
+          }
+        ]
+      }
+    ],
+    "uvDiagnostics": [
+      {
+        "material": "Back_005_DEMONZ",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "Jacket_014_AnimusResearch",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 1025,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "Bottoms_003_JoggerTech",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 0,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Socks_001_MkDna_RIG_Rig.v005",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 1025,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Skull_001_Rd_RIG_Rig.v002",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 2050,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Sandals_001_Blck_RIG_Rig.v004",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 2050,
+          "y": 1025,
+          "w": 511,
+          "h": 511
+        }
+      },
+      {
+        "material": "SK_Head_001_Default_RIG_Rig.v094",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 2050,
+          "y": 1538,
+          "w": 255,
+          "h": 255
+        }
+      },
+      {
+        "material": "EyelashesTop_001_Default",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 2050,
+          "y": 1795,
+          "w": 127,
+          "h": 127
+        }
+      },
+      {
+        "material": "Eyes_001_AngelYellow",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "normal",
+        "rect": {
+          "x": 2179,
+          "y": 1795,
+          "w": 127,
+          "h": 127
+        }
+      }
+    ]
+  },
+  {
+    "map": "orm",
+    "atlases": [
+      {
+        "index": 0,
+        "width": 3073,
+        "height": 2048,
+        "rects": [
+          {
+            "texture": "DEMONZ_M-DEMONZ_R",
+            "materials": [
+              "Back_005_DEMONZ"
+            ],
+            "x": 0,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Jacket_014_AnimusResearch_M-Jacket_014_AnimusResearch_R",
+            "materials": [
+              "Jacket_014_AnimusResearch"
+            ],
+            "x": 1025,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Bottoms_003_JoggerTech_M-Bottoms_003_JoggerTech_R",
+            "materials": [
+              "Bottoms_003_JoggerTech"
+            ],
+            "x": 0,
+            "y": 1025,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Socks_Murakami_DNA_M-Socks_Murakami_DNA_R",
+            "materials": [
+              "SK_Socks_001_MkDna_RIG_Rig.v005"
+            ],
+            "x": 1025,
+            "y": 1025,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Skull_001_Rd_M-Skull_001_Rd_R",
+            "materials": [
+              "SK_Skull_001_Rd_RIG_Rig.v002"
+            ],
+            "x": 2050,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Footwear_Sandals_M-Footwear_Sandals_R",
+            "materials": [
+              "SK_Sandals_001_Blck_RIG_Rig.v004"
+            ],
+            "x": 2050,
+            "y": 1025,
+            "width": 511,
+            "height": 511
+          },
+          {
+            "texture": "DNA_Angel_Divine_Light_M-DNA_Angel_Divine_Light_R",
+            "materials": [
+              "SK_Head_001_Default_RIG_Rig.v094"
+            ],
+            "x": 2050,
+            "y": 1538,
+            "width": 255,
+            "height": 255
+          },
+          {
+            "texture": "Eyelashes_M-Eyelashes_R",
+            "materials": [
+              "EyelashesTop_001_Default"
+            ],
+            "x": 2050,
+            "y": 1795,
+            "width": 127,
+            "height": 127
+          },
+          {
+            "texture": "Eyes_Angel_YLLW_M-Eyes_Angel_YLLW_R",
+            "materials": [
+              "Eyes_001_AngelYellow"
+            ],
+            "x": 2179,
+            "y": 1795,
+            "width": 127,
+            "height": 127
+          }
+        ]
+      }
+    ],
+    "uvDiagnostics": [
+      {
+        "material": "Back_005_DEMONZ",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "Jacket_014_AnimusResearch",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 1025,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "Bottoms_003_JoggerTech",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 0,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Socks_001_MkDna_RIG_Rig.v005",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 1025,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Skull_001_Rd_RIG_Rig.v002",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 2050,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Sandals_001_Blck_RIG_Rig.v004",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 2050,
+          "y": 1025,
+          "w": 511,
+          "h": 511
+        }
+      },
+      {
+        "material": "SK_Head_001_Default_RIG_Rig.v094",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 2050,
+          "y": 1538,
+          "w": 255,
+          "h": 255
+        }
+      },
+      {
+        "material": "EyelashesTop_001_Default",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 2050,
+          "y": 1795,
+          "w": 127,
+          "h": 127
+        }
+      },
+      {
+        "material": "Eyes_001_AngelYellow",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "orm",
+        "rect": {
+          "x": 2179,
+          "y": 1795,
+          "w": 127,
+          "h": 127
+        }
+      }
+    ]
+  },
+  {
+    "map": "emissive",
+    "atlases": [
+      {
+        "index": 0,
+        "width": 3073,
+        "height": 2048,
+        "rects": [
+          {
+            "texture": "Back_005_RdPrpl_E",
+            "materials": [
+              "Back_005_DEMONZ"
+            ],
+            "x": 0,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "(unnamed)",
+            "materials": [
+              "Jacket_014_AnimusResearch"
+            ],
+            "x": 1025,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Bottoms_003_JoggerTech_E",
+            "materials": [
+              "Bottoms_003_JoggerTech"
+            ],
+            "x": 0,
+            "y": 1025,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "(unnamed)",
+            "materials": [
+              "SK_Socks_001_MkDna_RIG_Rig.v005"
+            ],
+            "x": 1025,
+            "y": 1025,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "Skull_001_Rd_E",
+            "materials": [
+              "SK_Skull_001_Rd_RIG_Rig.v002"
+            ],
+            "x": 2050,
+            "y": 0,
+            "width": 1023,
+            "height": 1023
+          },
+          {
+            "texture": "(unnamed)",
+            "materials": [
+              "SK_Sandals_001_Blck_RIG_Rig.v004"
+            ],
+            "x": 2050,
+            "y": 1025,
+            "width": 511,
+            "height": 511
+          },
+          {
+            "texture": "(unnamed)",
+            "materials": [
+              "SK_Head_001_Default_RIG_Rig.v094"
+            ],
+            "x": 2050,
+            "y": 1538,
+            "width": 255,
+            "height": 255
+          },
+          {
+            "texture": "(unnamed)",
+            "materials": [
+              "EyelashesTop_001_Default"
+            ],
+            "x": 2050,
+            "y": 1795,
+            "width": 127,
+            "height": 127
+          },
+          {
+            "texture": "(unnamed)",
+            "materials": [
+              "Eyes_001_AngelYellow"
+            ],
+            "x": 2179,
+            "y": 1795,
+            "width": 127,
+            "height": 127
+          }
+        ]
+      }
+    ],
+    "uvDiagnostics": [
+      {
+        "material": "Back_005_DEMONZ",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "Jacket_014_AnimusResearch",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 1025,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "Bottoms_003_JoggerTech",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 0,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Socks_001_MkDna_RIG_Rig.v005",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 1025,
+          "y": 1025,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Skull_001_Rd_RIG_Rig.v002",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 2050,
+          "y": 0,
+          "w": 1023,
+          "h": 1023
+        }
+      },
+      {
+        "material": "SK_Sandals_001_Blck_RIG_Rig.v004",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 2050,
+          "y": 1025,
+          "w": 511,
+          "h": 511
+        }
+      },
+      {
+        "material": "SK_Head_001_Default_RIG_Rig.v094",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 2050,
+          "y": 1538,
+          "w": 255,
+          "h": 255
+        }
+      },
+      {
+        "material": "EyelashesTop_001_Default",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 2050,
+          "y": 1795,
+          "w": 127,
+          "h": 127
+        }
+      },
+      {
+        "material": "Eyes_001_AngelYellow",
+        "texCoordIndex": 0,
+        "hasTransform": false,
+        "map": "emissive",
+        "rect": {
+          "x": 2179,
+          "y": 1795,
+          "w": 127,
+          "h": 127
+        }
+      }
+    ]
+  }
+]

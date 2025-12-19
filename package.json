@@ -1,0 +1,32 @@
+{
+  "name": "atlasgen",
+  "version": "1.0.0",
+  "description": "Texture atlas and UV remap tooling for GLB assets",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "atlas": "node ./scripts/atlas-cli.mjs",
+    "serve": "node ./web/server.mjs",
+    "verify": "node ./tests/verify-atlas.mjs",
+    "dev:web": "npx vite --config web/vite.config.js",
+    "build:web": "npx vite build --config web/vite.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@gltf-transform/core": "^4.2.1",
+    "@gltf-transform/extensions": "^4.2.1",
+    "@gltf-transform/functions": "^4.2.1",
+    "commander": "^14.0.2",
+    "express": "^5.2.1",
+    "image-size": "^2.0.2",
+    "maxrects-packer": "^2.7.3",
+    "multer": "^2.0.2",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "vite": "^5.4.8"
+  }
+}

@@ -14,6 +14,11 @@ Explore generating a texture atlas for `.glb` models and remapping UVs without D
 - Shared atlas core in `scripts/atlas-lib.mjs` (used by CLI and web server).
 - Web server/UI: `web/server.mjs` serves `web/public/index.html` for upload → process → download.
 
+## GitHub Pages deployment
+- Vite is configured with `base: './'` and `outDir: '../docs'`, so `npm run build:web` emits a static site at repo-root `docs/` that works under the repo subpath.
+- Manual deploy: `npm install` → `npm run build:web` → commit/push `docs/` to `main`, then enable GitHub Pages with source `Deploy from a branch` → `main` → `/docs`.
+- CI: `.github/workflows/gh-pages.yml` builds on pushes to `main` (`npm ci` + `npm run build:web`) and deploys `docs/` via GitHub Pages. Ensure Pages is enabled for the repo; the workflow publishes automatically.
+
 ## Anticipated Structure (to refine as we build)
 - `/scripts/` — tooling (e.g., Node CLI for atlas/UV remap).
 - `/web/` — web UI for uploads and user interaction.

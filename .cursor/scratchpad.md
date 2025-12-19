@@ -2,6 +2,7 @@
 
 ## Background and Motivation
 Explore whether we can generate a texture atlas and remap UVs for `.glb` models without Blender, providing a web-accessible workflow for users to upload, process, and download an updated asset.
+- Prepare the web experience for static hosting on GitHub Pages, including an output layout GH Pages can serve without a backend.
 
 ## Key Challenges and Analysis
 - Selecting a tooling stack (likely Node with `@gltf-transform` or similar) that can both pack textures and adjust UV buffers reliably.
@@ -9,6 +10,9 @@ Explore whether we can generate a texture atlas and remap UVs for `.glb` models 
 - Preserving PBR correctness (sRGB/linear handling, tangents when normal maps exist).
 - Managing shared materials/textures across primitives; avoid breaking references during atlasing.
 - Providing a browser-friendly flow (worker-based) for uploads and downloads without blocking the UI.
+- GitHub Pages serves from a subpath (`/<repo>/`), so Vite needs a `base` that works under that prefix or relative URLs (`./`), and the build output must land in a path GH Pages can publish (e.g., `docs/` on main or a `gh-pages` branch).
+- Static hosting means the Express server is not available; the worker build must bundle all dependencies and load via relative assets (including worker chunks).
+- The current Vite build outputs to `web/dist` with default base `/`, which would break asset URLs when served from a repo subpath.
 
 ## High-level Task Breakdown
 1) Choose atlas pipeline/library and sample assets; define success criteria for first pass.  
@@ -17,6 +21,9 @@ Explore whether we can generate a texture atlas and remap UVs for `.glb` models 
 4) Build a web UI (worker-backed) for upload → process → download, with basic preview and debug info.  
 5) Optimize/extend for edge cases (multiple materials, varying texture sizes, normals/ORM, mipmap regen, tangents).  
 6) Document usage, known limitations, and update guides.
+7) GH Pages readiness: set Vite `base` for repo subpath-friendly URLs, move build output to a publishable path (e.g., repo-root `docs/`), and ensure worker/assets load relatively.  
+8) Add deploy instructions or CI step for GH Pages (build to `docs/` on main or publish `web/dist` to `gh-pages`).  
+9) Smoke-test static build locally (`npm run build:web`, serve `docs/` or `web/dist`) to verify worker loads and downloads work.
 
 ## Project Status Board
 - [x] Pipeline/library decision and sample asset selection (pipeline chosen: Node + @gltf-transform; samples in `sample_glb/`)
@@ -27,6 +34,7 @@ Explore whether we can generate a texture atlas and remap UVs for `.glb` models 
 - [ ] Documentation updates
 - [ ] Web UI modernization (product-style page; Planner plan drafted)
 - [ ] Browser-only port (worker, canvas/WebIO; no backend)
+- [ ] GH Pages deploy prep (Vite base + outDir to publishable path, docs/ or gh-pages)
 
 ## Current Status / Progress Tracking
 - Pipeline selected: Node + @gltf-transform for GLB IO and texture/UV manipulation.
@@ -37,6 +45,9 @@ Explore whether we can generate a texture atlas and remap UVs for `.glb` models 
 - Web server/UI: Express + multer memory upload, multi-file upload/merge, uses shared atlas core, returns layout JSON + base64 GLB; debug log printed server-side. Frontend offers all atlas options (maps, max size, padding, texcoord, per-map formats/quality, resize mode/ceil, max bins), shows status and downloadable GLB.
 - Browser-only port in progress: Vite config added, UI now uses a module Worker instead of backend fetch, with placeholder worker echoing first GLB for flow continuity. Next: port atlas pipeline into worker (WebIO + canvas/Squoosh).
 - Tests: `tests/verify-atlas.mjs` validates basic stats, UV ranges vs rects, detects duplicates and cross-map inconsistencies, and can dump UVs.
+- GitHub Pages: not yet configured; Vite currently outputs to `web/dist` with base `/`, which would break when hosted at `/<repo>/`. Need to move the build to a publishable path and set a repo-safe base.
+- GitHub Pages prep: Vite now uses `base: './'` and outputs to `../docs` so `npm run build:web` yields a Pages-ready static site under `docs/`. README documents manual deploy + CI option; need to enable Pages or add CI workflow.
+- GitHub Pages CI: added `.github/workflows/gh-pages.yml` to build (`npm ci` + `npm run build:web`) and deploy `docs/` on pushes to `main`; requires Pages to be enabled in repo settings.
 
 ## Executor's Feedback or Assistance Requests
 - (none yet)

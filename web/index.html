@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Combine your GLB textures into a single optimized atlas, remap UVs safely, and download a lighter GLB—right in your browser." />
-  <title>AtlasGen | Texture Atlas Lab</title>
+  <meta name="description" content="glb.tools — pack your GLB textures into atlases, remap UVs, and download a lighter GLB in your browser." />
+  <title>glb.tools | GLB Texture Atlas</title>
   <style>
     :root {
       --bg: #0f1115;
@@ -34,23 +34,18 @@
     }
     a { color: var(--accent); }
     .page {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 24px 20px 96px;
+      padding: 24px 16px 72px;
     }
     header.hero {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      align-items: center;
+      text-align: center;
     }
-    .hero-row {
-      display: grid;
-      grid-template-columns: minmax(320px, 1fr) minmax(360px, 440px);
-      gap: 16px;
-      align-items: start;
-      margin-top: 16px;
-    }
-    .section { margin: 32px 0; }
+    .section { margin: 28px 0; }
     .badge {
       display: inline-flex;
       align-items: center;
@@ -64,7 +59,7 @@
     }
     h1 {
       margin: 0;
-      font-size: 36px;
+      font-size: 34px;
       letter-spacing: -0.4px;
     }
     h2 {
@@ -83,9 +78,10 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 12px;
+      justify-content: center;
     }
     .grid {
-      max-width: 780px;
+      max-width: 720px;
       margin: 0 auto;
     }
     .card {
@@ -223,221 +219,107 @@
       padding: 14px;
       background: #11141a;
     }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 14px;
-    }
-    .feature-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px;
-      background: #11141a;
-      min-height: 140px;
-    }
     .trust-bar {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-top: 8px;
-    }
-    .faq details {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 10px 12px;
-      background: #11141a;
-    }
-    .faq summary {
-      cursor: pointer;
-      color: #f7f9fc;
-      font-weight: 600;
-    }
-    .faq p {
-      color: var(--muted);
-      margin: 8px 0 0 0;
-    }
-    .sticky-bar {
-      position: fixed;
-      bottom: 12px;
-      left: 0;
-      right: 0;
-      display: flex;
       justify-content: center;
-      pointer-events: none;
-      padding: 0 12px;
+      margin-top: 6px;
     }
-    .sticky-inner {
-      pointer-events: all;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      background: rgba(17,20,26,0.9);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 14px;
-      box-shadow: var(--shadow);
-      max-width: 640px;
-      width: 100%;
-      backdrop-filter: blur(6px);
-    }
-    .sticky-text {
-      flex: 1;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .sticky-bar { display: none; }
     @media (max-width: 960px) {
       .grid { grid-template-columns: 1fr; }
-      .page { padding: 16px 14px 72px; }
-      .hero-row { grid-template-columns: 1fr; }
+      .page { padding: 16px 14px 64px; }
       h1 { font-size: 30px; }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="hero-row">
-      <header class="hero">
-        <div class="badge">Texture Atlasing • Web</div>
-        <h1>Optimize your GLB textures in one click</h1>
-        <p class="lead">Merge multiple GLBs, pack textures into a single atlas per map, and remap UVs automatically. Get a lighter, download-ready GLB without leaving your browser.</p>
-        <div class="cta-row">
-          <button class="primary" type="button" id="hero-upload">Upload GLB</button>
-          <button class="ghost" type="button" id="hero-learn">How it works</button>
-        </div>
-        <div class="trust-bar">
-          <span class="pill">Runs in your browser</span>
-          <span class="pill">No signup</span>
-          <span class="pill">BaseColor / Normal / ORM / Emissive</span>
-          <span class="pill">Open source</span>
-        </div>
-      </header>
+    <header class="hero">
+      <div class="badge">glb.tools</div>
+      <h1>Optimize your GLB textures in one click</h1>
+      <p class="lead">Pack textures into atlases, remap UVs automatically, and download a lighter GLB—right in your browser.</p>
+      <div class="cta-row">
+        <button class="primary" type="button" id="hero-upload">Upload GLB</button>
+      </div>
+      <div class="trust-bar">
+        <span class="pill">Runs in your browser</span>
+        <span class="pill">No signup</span>
+        <span class="pill">BaseColor / Normal / ORM / Emissive</span>
+      </div>
+    </header>
 
-      <form id="atlas-form" class="card" autocomplete="off" style="margin:0;">
-        <h3>Try it now</h3>
-        <p class="subtext" style="margin-top:-2px;">Upload, keep defaults, and hit Generate. Advanced options stay concise.</p>
-        <label class="uploader">
-          <strong>Click here or drag and drop your .GLB files</strong>
-          <input style="display:none" type="file" name="models" accept=".glb" multiple required />
-          <div class="chips" id="file-chips"><span class="chip">No files selected</span></div>
-        </label>
+    <section class="section">
+      <div class="grid">
+        <form id="atlas-form" class="card" autocomplete="off">
+          <h3>Start here</h3>
+          <p class="subtext" style="margin-top:-2px;">Upload your GLB(s), keep the defaults, and generate. Settings stay simple.</p>
 
-        <div class="card" style="margin-top:14px; padding:14px;">
-          <h3>Layout & sizing</h3>
-          <div class="row">
-            <label>Atlas size (px)
-              <select name="maxSize">
-                <option value="4096" selected>4096</option>
-                <option value="2048">2048</option>
-                <option value="1024">1024</option>
-              </select>
-            </label>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:14px; padding:14px;">
-          <h3>Formats & quality</h3>
-          <div class="row">
-            <label>Atlas format
-              <select name="formatAll">
-                <option value="webp" selected>webp</option>
-                <option value="png">png (lossless)</option>
-                <option value="jpeg">jpeg (lossy, no alpha)</option>
-              </select>
-            </label>
-          </div>
-          <label style="margin-top:8px;">Quality (jpeg/webp)
-            <input type="number" name="quality" value="85" min="1" max="100" />
+          <label class="uploader">
+            <strong>Click here or drag and drop your .GLB files</strong>
+            <input style="display:none" type="file" name="models" accept=".glb" multiple required />
+            <div class="chips" id="file-chips"><span class="chip">No files selected</span></div>
           </label>
-        </div>
 
-        <div class="actions">
-          <button class="primary" type="submit" id="submit-btn">Generate Atlas</button>
-        </div>
-        <div class="status" id="status" style="text-align:center; margin-top:6px;">Idle</div>
-      </form>
-    </div>
+          <div class="card" style="margin-top:14px; padding:14px;">
+            <h3>Layout & sizing</h3>
+            <div class="row">
+              <label>Atlas size (px)
+                <select name="maxSize">
+                  <option value="4096" selected>4096</option>
+                  <option value="2048">2048</option>
+                  <option value="1024">1024</option>
+                </select>
+              </label>
+            </div>
+          </div>
 
-    <section class="section" id="how">
-      <h2>How it works</h2>
+          <div class="card" style="margin-top:14px; padding:14px;">
+            <h3>Formats & quality</h3>
+            <div class="row">
+              <label>Atlas format
+                <select name="formatAll">
+                  <option value="webp" selected>webp</option>
+                  <option value="png">png (lossless)</option>
+                  <option value="jpeg">jpeg (lossy, no alpha)</option>
+                </select>
+              </label>
+            </div>
+            <label style="margin-top:8px;">Quality (jpeg/webp)
+              <input type="number" name="quality" value="85" min="1" max="100" />
+            </label>
+          </div>
+
+          <div class="actions">
+            <button class="primary" type="submit" id="submit-btn">Generate Atlas</button>
+          </div>
+          <div class="status" id="status" style="text-align:center; margin-top:6px;">Idle</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 style="text-align:center;">How it works</h2>
       <div class="steps">
         <div class="step">
-          <strong>1) Upload</strong>
+          <strong>Upload</strong>
           <p class="subtext">Drop one or many GLBs; we merge before atlasing.</p>
         </div>
         <div class="step">
-          <strong>2) Configure</strong>
-          <p class="subtext">Choose atlas size, format, and quality. Defaults are safe.</p>
+          <strong>Configure</strong>
+          <p class="subtext">Keep the defaults or tweak size/format/quality.</p>
         </div>
         <div class="step">
-          <strong>3) Download</strong>
-          <p class="subtext">Get a single GLB with remapped UVs and atlas textures.</p>
+          <strong>Download</strong>
+          <p class="subtext">Get a single GLB with remapped UVs and atlased textures.</p>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <h2>Why AtlasGen?</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <strong>Single-GLB output</strong>
-          <p class="subtext">Combines meshes and materials so your scene loads faster.</p>
-        </div>
-        <div class="feature-card">
-          <strong>Per-map atlases</strong>
-          <p class="subtext">BaseColor, Normal, ORM, and Emissive handled with correct color spaces.</p>
-        </div>
-        <div class="feature-card">
-          <strong>UV-safe remap</strong>
-          <p class="subtext">UVs are rewritten per atlas with padding and power-of-two layouts.</p>
-        </div>
-        <div class="feature-card">
-          <strong>Browser-first</strong>
-          <p class="subtext">Processing runs in a worker; no installs and no signup.</p>
-        </div>
-        <div class="feature-card">
-          <strong>Configurable</strong>
-          <p class="subtext">Pick atlas size, formats, and quality—keep lossless where it matters.</p>
-        </div>
-        <div class="feature-card">
-          <strong>Debug-friendly</strong>
-          <p class="subtext">Layout is logged to console for inspection if you need it.</p>
-        </div>
-      </div>
+      <div class="subtext" style="text-align:center;">Privacy: your files stay in your browser when using the static Pages build.</div>
     </section>
-
-    <section class="section faq" id="faq">
-      <h2>FAQ</h2>
-      <div class="subtext" style="margin-bottom:10px;">Quick answers for common questions.</div>
-      <div class="grid" style="max-width: 780px; margin: 0; gap: 10px;">
-        <details>
-          <summary>Do my files leave the browser?</summary>
-          <p>Processing runs in a web worker. No account or server upload is required for the static build.</p>
-        </details>
-        <details>
-          <summary>Which maps are packed?</summary>
-          <p>BaseColor, Normal, ORM, and Emissive. Missing maps fall back to sensible defaults.</p>
-        </details>
-        <details>
-          <summary>What formats are supported?</summary>
-          <p>GLB input; output is a single GLB plus atlas textures embedded.</p>
-        </details>
-        <details>
-          <summary>Recommended settings?</summary>
-          <p>Keep 4096px for complex scenes, use webp, and leave quality at 85. Switch to png for lossless normals if needed.</p>
-        </details>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="subtext">Privacy: your files stay in your browser when using the static Pages build. Check the console for atlas layout logs if you need to debug.</div>
-    </section>
-  </div>
-
-  <div class="sticky-bar">
-    <div class="sticky-inner">
-      <div class="sticky-text">Ready to generate your atlas?</div>
-      <button class="primary" type="button" id="sticky-submit">Generate</button>
-    </div>
   </div>
 
   <script type="module">
@@ -448,8 +330,6 @@
     const chipsEl = document.getElementById('file-chips');
     const dropZone = document.querySelector('.uploader');
     const heroUpload = document.getElementById('hero-upload');
-    const heroLearn = document.getElementById('hero-learn');
-    const stickySubmit = document.getElementById('sticky-submit');
     let downloadUrl = null;
     let worker = null;
 
@@ -475,23 +355,8 @@
       submitBtn.onclick = null;
     }
 
-    function smoothScrollTo(el) {
-      if (el && el.scrollIntoView) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
     if (heroUpload) {
       heroUpload.addEventListener('click', () => fileInput?.click());
-    }
-    if (heroLearn) {
-      heroLearn.addEventListener('click', () => {
-        const how = document.getElementById('how');
-        smoothScrollTo(how);
-      });
-    }
-    if (stickySubmit) {
-      stickySubmit.addEventListener('click', () => form?.requestSubmit());
     }
 
     function setDownloadButton(url, name) {

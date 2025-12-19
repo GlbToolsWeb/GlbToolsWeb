@@ -36,13 +36,19 @@
     .page {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 32px 24px 120px;
+      padding: 24px 20px 96px;
     }
     header.hero {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-bottom: 28px;
+    }
+    .hero-row {
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(360px, 440px);
+      gap: 16px;
+      align-items: start;
+      margin-top: 16px;
     }
     .section { margin: 32px 0; }
     .badge {
@@ -281,28 +287,75 @@
     }
     @media (max-width: 960px) {
       .grid { grid-template-columns: 1fr; }
-      .page { padding: 20px 16px 64px; }
+      .page { padding: 16px 14px 72px; }
+      .hero-row { grid-template-columns: 1fr; }
       h1 { font-size: 30px; }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="hero">
-      <div class="badge">Texture Atlasing • Web</div>
-      <h1>Optimize your GLB textures in one click</h1>
-      <p class="lead">Merge multiple GLBs, pack textures into a single atlas per map, and remap UVs automatically. Get a lighter, download-ready GLB without leaving your browser.</p>
-      <div class="cta-row">
-        <button class="primary" type="button" id="hero-upload">Upload GLB</button>
-        <button class="ghost" type="button" id="hero-learn">How it works</button>
-      </div>
-      <div class="trust-bar">
-        <span class="pill">Runs in your browser</span>
-        <span class="pill">No signup</span>
-        <span class="pill">BaseColor / Normal / ORM / Emissive</span>
-        <span class="pill">Open source</span>
-      </div>
-    </header>
+    <div class="hero-row">
+      <header class="hero">
+        <div class="badge">Texture Atlasing • Web</div>
+        <h1>Optimize your GLB textures in one click</h1>
+        <p class="lead">Merge multiple GLBs, pack textures into a single atlas per map, and remap UVs automatically. Get a lighter, download-ready GLB without leaving your browser.</p>
+        <div class="cta-row">
+          <button class="primary" type="button" id="hero-upload">Upload GLB</button>
+          <button class="ghost" type="button" id="hero-learn">How it works</button>
+        </div>
+        <div class="trust-bar">
+          <span class="pill">Runs in your browser</span>
+          <span class="pill">No signup</span>
+          <span class="pill">BaseColor / Normal / ORM / Emissive</span>
+          <span class="pill">Open source</span>
+        </div>
+      </header>
+
+      <form id="atlas-form" class="card" autocomplete="off" style="margin:0;">
+        <h3>Try it now</h3>
+        <p class="subtext" style="margin-top:-2px;">Upload, keep defaults, and hit Generate. Advanced options stay concise.</p>
+        <label class="uploader">
+          <strong>Click here or drag and drop your .GLB files</strong>
+          <input style="display:none" type="file" name="models" accept=".glb" multiple required />
+          <div class="chips" id="file-chips"><span class="chip">No files selected</span></div>
+        </label>
+
+        <div class="card" style="margin-top:14px; padding:14px;">
+          <h3>Layout & sizing</h3>
+          <div class="row">
+            <label>Atlas size (px)
+              <select name="maxSize">
+                <option value="4096" selected>4096</option>
+                <option value="2048">2048</option>
+                <option value="1024">1024</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px; padding:14px;">
+          <h3>Formats & quality</h3>
+          <div class="row">
+            <label>Atlas format
+              <select name="formatAll">
+                <option value="webp" selected>webp</option>
+                <option value="png">png (lossless)</option>
+                <option value="jpeg">jpeg (lossy, no alpha)</option>
+              </select>
+            </label>
+          </div>
+          <label style="margin-top:8px;">Quality (jpeg/webp)
+            <input type="number" name="quality" value="85" min="1" max="100" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="submit" id="submit-btn">Generate Atlas</button>
+        </div>
+        <div class="status" id="status" style="text-align:center; margin-top:6px;">Idle</div>
+      </form>
+    </div>
 
     <section class="section" id="how">
       <h2>How it works</h2>
@@ -349,57 +402,6 @@
           <strong>Debug-friendly</strong>
           <p class="subtext">Layout is logged to console for inspection if you need it.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section card" id="start">
-      <h2>Try it now</h2>
-      <p class="subtext">Defaults are ready to go. Advanced options stay unchanged—upload and hit Generate.</p>
-
-      <div class="grid">
-        <form id="atlas-form" class="card" autocomplete="off">
-          <h3>1) Upload models</h3>
-          <p class="subtext">Drop one or multiple .glb files to merge before atlasing.</p>
-          <label class="uploader">
-            <strong>Click here or drag and drop your .GLB files</strong>
-            <input style="display:none" type="file" name="models" accept=".glb" multiple required />
-            <div class="chips" id="file-chips"><span class="chip">No files selected</span></div>
-          </label>
-
-          <div class="card" style="margin-top:14px; padding:14px;">
-            <h3>2) Layout & sizing</h3>
-            <div class="row">
-              <label>Atlas size (px)
-                <select name="maxSize">
-                  <option value="4096" selected>4096</option>
-                  <option value="2048">2048</option>
-                  <option value="1024">1024</option>
-                </select>
-              </label>
-            </div>
-          </div>
-
-          <div class="card" style="margin-top:14px; padding:14px;">
-            <h3>3) Formats & quality</h3>
-            <div class="row">
-              <label>Atlas format
-                <select name="formatAll">
-                  <option value="webp" selected>webp</option>
-                  <option value="png">png (lossless)</option>
-                  <option value="jpeg">jpeg (lossy, no alpha)</option>
-                </select>
-              </label>
-            </div>
-            <label style="margin-top:8px;">Quality (jpeg/webp)
-              <input type="number" name="quality" value="85" min="1" max="100" />
-            </label>
-          </div>
-
-          <div class="actions">
-            <button class="primary" type="submit" id="submit-btn">Generate Atlas</button>
-          </div>
-          <div class="status" id="status" style="text-align:center; margin-top:6px;">Idle</div>
-        </form>
       </div>
     </section>
 

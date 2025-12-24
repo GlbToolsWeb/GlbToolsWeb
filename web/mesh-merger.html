@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="glb.tools | Mesh Merger — combine all meshes in a GLB into one, with transforms baked.">
+  <title>glb.tools | Mesh Merger</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="badge">glb.tools</div>
+      <h1>Mesh Merger</h1>
+      <p class="lead">Upload a GLB and merge all meshes into one. We bake node transforms and keep your materials intact.</p>
+    </header>
+
+    <section class="section">
+      <div class="grid">
+        <form id="merge-form" class="card" autocomplete="off">
+          <h3>Start here</h3>
+          <p class="subtext" style="margin-top:-2px;">Upload a single GLB; we will merge all meshes and bake transforms.</p>
+
+          <label class="uploader">
+            <strong>Click here or drag and drop your .GLB file</strong>
+            <input style="display:none" type="file" name="model" accept=".glb" required />
+            <div class="chips" id="merge-file-chip"><span class="chip">No file selected</span></div>
+          </label>
+
+          <div class="actions">
+            <button class="primary" type="submit" id="merge-submit">Merge Meshes</button>
+          </div>
+          <div class="status" id="merge-status" style="text-align:center; margin-top:6px;">Idle</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 style="text-align:center;">What happens</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>Upload</strong>
+          <p class="subtext">Provide one GLB.</p>
+        </div>
+        <div class="step">
+          <strong>Bake transforms</strong>
+          <p class="subtext">Node transforms are baked into geometry.</p>
+        </div>
+        <div class="step">
+          <strong>Merge</strong>
+          <p class="subtext">All primitives are combined into a single mesh; materials are preserved.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="subtext" style="text-align:center;">Privacy: your files stay in your browser when using glb.tools.</div>
+    </section>
+  </div>
+
+  <script type="module">
+    const form = document.getElementById('merge-form');
+    const statusEl = document.getElementById('merge-status');
+    const submitBtn = document.getElementById('merge-submit');
+    const fileInput = form.elements['model'];
+    const chipEl = document.getElementById('merge-file-chip');
+    const dropZone = form.querySelector('.uploader');
+    let worker = null;
+    let downloadUrl = null;
+
+    ['dragenter','dragover','dragleave','drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    });
+    ['dragenter','dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, () => dropZone.classList.add('dragover'));
+    });
+    ['dragleave','drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, () => dropZone.classList.remove('dragover'));
+    });
+    dropZone.addEventListener('drop', (e) => {
+      const dt = new DataTransfer();
+      Array.from(e.dataTransfer.files || []).forEach((f) => {
+        if (f.name.toLowerCase().endsWith('.glb')) dt.items.add(f);
+      });
+      if (dt.files.length) {
+        fileInput.files = dt.files;
+        updateChip(fileInput.files[0]);
+        resetButton();
+      }
+    });
+
+    function updateChip(file) {
+      chipEl.innerHTML = '';
+      if (!file) {
+        chipEl.innerHTML = '<span class="chip">No file selected</span>';
+        return;
+      }
+      const span = document.createElement('span');
+      span.className = 'chip';
+      span.textContent = file.name;
+      chipEl.appendChild(span);
+    }
+
+    function resetButton() {
+      downloadUrl = null;
+      submitBtn.type = 'submit';
+      submitBtn.textContent = 'Merge Meshes';
+      submitBtn.disabled = false;
+      submitBtn.onclick = null;
+    }
+
+    function setDownloadButton(url, name) {
+      downloadUrl = url;
+      submitBtn.type = 'button';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Download merged GLB';
+      submitBtn.onclick = () => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = name || 'merged.glb';
+        a.click();
+      };
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.className = 'status';
+      statusEl.textContent = '';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+
+      if (!fileInput.files.length) {
+        statusEl.textContent = 'Please choose a GLB file.';
+        statusEl.classList.add('error');
+        resetButton();
+        return;
+      }
+
+      try {
+        if (!worker) {
+          worker = new Worker(new URL('./src/mesh-merger-worker.js', import.meta.url), { type: 'module' });
+        }
+        const file = fileInput.files[0];
+        const result = await new Promise((resolve, reject) => {
+          const timer = setTimeout(() => reject(new Error('Worker timed out')), 120000);
+          worker.onmessage = (ev) => {
+            clearTimeout(timer);
+            const { error, glb } = ev.data || {};
+            if (error) return reject(new Error(error));
+            resolve({ glb });
+          };
+          worker.onerror = (err) => {
+            clearTimeout(timer);
+            reject(err);
+          };
+          worker.postMessage({ file });
+        });
+
+        const glbBuffer = Uint8Array.from(atob(result.glb), c => c.charCodeAt(0));
+        const blob = new Blob([glbBuffer], { type: 'model/gltf-binary' });
+        const url = URL.createObjectURL(blob);
+        const name = (file.name.replace(/\.glb$/i, '') || 'merged') + '.merged.glb';
+        statusEl.textContent = 'Done.';
+        statusEl.classList.add('success');
+        setDownloadButton(url, name);
+      } catch (err) {
+        statusEl.textContent = `Error: ${err.message}`;
+        statusEl.classList.add('error');
+        resetButton();
+      }
+    });
+
+    fileInput.addEventListener('change', () => updateChip(fileInput.files[0]));
+  </script>
+</body>
+</html>
+

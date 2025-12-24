@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="glb.tools | Mesh Merger — combine all meshes in a GLB into one, with transforms baked.">
+  <title>glb.tools | Mesh Merger</title>
+  <script type="module" crossorigin src="./assets/merge-D66YrHPh.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/style-6fJ1xWKc.js">
+  <link rel="stylesheet" crossorigin href="./assets/style-BQN816Me.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="badge">glb.tools</div>
+      <h1>Mesh Merger</h1>
+      <p class="lead">Upload a GLB and merge all meshes into one. We bake node transforms and keep your materials intact.</p>
+    </header>
+
+    <section class="section">
+      <div class="grid">
+        <form id="merge-form" class="card" autocomplete="off">
+          <h3>Start here</h3>
+          <p class="subtext" style="margin-top:-2px;">Upload a single GLB; we will merge all meshes and bake transforms.</p>
+
+          <label class="uploader">
+            <strong>Click here or drag and drop your .GLB file</strong>
+            <input style="display:none" type="file" name="model" accept=".glb" required />
+            <div class="chips" id="merge-file-chip"><span class="chip">No file selected</span></div>
+          </label>
+
+          <div class="actions">
+            <button class="primary" type="submit" id="merge-submit">Merge Meshes</button>
+          </div>
+          <div class="status" id="merge-status" style="text-align:center; margin-top:6px;">Idle</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 style="text-align:center;">What happens</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>Upload</strong>
+          <p class="subtext">Provide one GLB.</p>
+        </div>
+        <div class="step">
+          <strong>Bake transforms</strong>
+          <p class="subtext">Node transforms are baked into geometry.</p>
+        </div>
+        <div class="step">
+          <strong>Merge</strong>
+          <p class="subtext">All primitives are combined into a single mesh; materials are preserved.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="subtext" style="text-align:center;">Privacy: your files stay in your browser when using glb.tools.</div>
+    </section>
+  </div>
+
+</body>
+</html>
+

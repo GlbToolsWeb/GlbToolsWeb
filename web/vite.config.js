@@ -16,6 +16,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         optimize: path.resolve(__dirname, 'texture-optimizer.html'),
+        merge: path.resolve(__dirname, 'mesh-merger.html'),
       },
     },
   },

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="glb.tools | Texture Optimizer — re-encode and resize GLB textures without atlasing." />
+  <title>glb.tools | Texture Optimizer</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #1f2530;
+      --text: #e8ecf2;
+      --muted: #a9b3c1;
+      --accent: #4f8bff;
+      --accent-strong: #3a73e0;
+      --border: #2a3040;
+      --radius: 12px;
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", "Segoe UI", -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 24px 16px 72px;
+      text-align: center;
+    }
+    h1 { margin: 8px 0; font-size: 32px; letter-spacing: -0.4px; }
+    p.lead { margin: 0 0 12px 0; color: var(--muted); line-height: 1.5; }
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #11141a;
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+    }
+    .uploader {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #11141a;
+      text-align: center;
+      cursor: pointer;
+      margin: 10px 0 14px 0;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+    }
+    .row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    button.primary {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: white;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(79,139,255,0.35);
+    }
+    .status { text-align: center; color: var(--muted); margin-top: 8px; min-height: 18px; }
+    .status.success { color: #3dd598; }
+    .status.error { color: #ff6b6b; }
+  </style>
+  <script type="module" crossorigin src="./assets/optimize-4GWY8zUF.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+</head>
+<body>
+  <div class="page">
+    <h1>Texture Optimizer</h1>
+    <p class="lead">Re-encode and resize textures inside a GLB. No atlasing, no merges—just smaller textures.</p>
+
+    <form id="opt-form" class="card" autocomplete="off">
+      <label class="uploader">
+        <strong>Click or drop your .GLB file</strong>
+        <input style="display:none" type="file" name="model" accept=".glb" required />
+        <div class="chips" id="file-chip"><span class="chip">No file selected</span></div>
+      </label>
+
+      <div class="row">
+        <label>Texture format
+          <select name="format">
+            <option value="webp" selected>webp</option>
+            <option value="png">png (lossless)</option>
+            <option value="jpeg">jpeg (lossy, no alpha)</option>
+          </select>
+        </label>
+        <label>Quality (jpeg/webp)
+          <input type="number" name="quality" value="85" min="1" max="100" />
+        </label>
+      </div>
+
+      <div class="row" style="margin-top:8px;">
+        <label>Max texture size (px)
+          <select name="maxSize">
+            <option value="4096" selected>4096</option>
+            <option value="2048">2048</option>
+            <option value="1024">1024</option>
+            <option value="512">512</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button class="primary" type="submit" id="submit-btn">Optimize</button>
+      </div>
+      <div class="status" id="status">Idle</div>
+    </form>
+  </div>
+
+</body>
+</html>
+

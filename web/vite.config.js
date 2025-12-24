@@ -13,7 +13,10 @@ export default defineConfig({
     emptyOutDir: true,
     target: 'es2020',
     rollupOptions: {
-      input: path.resolve(__dirname, 'index.html'),
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        optimize: path.resolve(__dirname, 'texture-optimizer.html'),
+      },
     },
   },
   server: {
